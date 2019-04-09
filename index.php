@@ -17,16 +17,17 @@ connected();
             <div class="form-group has-danger">
                 <label class="form-control-label">Adresse mail</label>
                 <input type="text" name="mail" value="<?php if(isset($_POST['mail'])){echo $_POST['mail'];}?>"
-                        placeholder="Adresse mail"
-                        class="form-control <?php if(array_key_exists('mail',$erreur)){echo "is-invalid";}?>"" id="inputInvalid">
+                       placeholder="Adresse mail"
+                       class="form-control <?php if(array_key_exists('mail',$erreur)){echo "is-invalid";}?>"" id="inputInvalid">
                 <div class="invalid-feedback"><?php if(array_key_exists('mail',$erreur)){echo $erreur['mail'];}?></div>
             </div>
 
             <div class="form-group has-danger">
                 <label class="form-control-label">Mot de passe</label>
                 <input type="password"
-                        name="mdp" value="<?php if(isset($_POST['mdp'])){echo $_POST['mdp'];}?>"
-                        class="form-control <?php if(array_key_exists('mdp',$erreur)){echo "is-invalid";}?>" id="inputInvalid">
+                       name="mdp" value="<?php if(isset($_POST['mdp'])){echo $_POST['mdp'];}?>"
+                       placeholder="Mot de passe"
+                       class="form-control <?php if(array_key_exists('mdp',$erreur)){echo "is-invalid";}?>" id="inputInvalid">
                 <div  class="invalid-feedback"><?php if(array_key_exists('mdp',$erreur)){echo $erreur['mdp'];}?></div> 
             </div>
 
