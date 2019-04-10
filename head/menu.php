@@ -13,13 +13,13 @@
                     <a class="nav-link" href="factures.php"><i class="fa fa-file-o"></i> Factures</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="societes.php"><i class="fa fa-building"></i> Sociétés</a>
+                    <a class="nav-link" href="pageSocietes.php"><i class="fa fa-building"></i> Sociétés</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fa fa-envelope-open"></i> Contact</a>
                 </li>
                 <?php
-                if($_SESSION['auth']['level']==3)
+                if($_SESSION['auth']['level']=='godmode')
                 {
                 ?>
                 <li class="nav-item dropdown">

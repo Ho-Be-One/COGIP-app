@@ -15,7 +15,7 @@ noConnected();
         <a class="nav-link" data-toggle="tab" href="#contacts">Derniers contacts</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#societes">Derniers sociétés</a>
+        <a class="nav-link" data-toggle="tab" href="#societes">Dernières sociétés</a>
         </li>
     </ul>
     <div id="myTabContent" class="tab-content p-3">

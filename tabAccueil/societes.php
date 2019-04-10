@@ -1,72 +1,33 @@
+
+
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">##</th>
-      <th scope="col">Numéro de facture</th>
-      <th scope="col">Date</th>
-      <th scope="col">Société</th>
+      <th scope="col">Nom</th>
+      <th scope="col">TVA</th>
+      <th scope="col">Pays</th>
+      <th scope="col">Type</th>
+      <th scope="col">Date de création</th>
     </tr>
   </thead>
   <tbody>
-    <tr class="table-active">
-      <th scope="row">Active</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
+    <tr class="table">
+      <?php
+include "./assets/connexion/bd.php";
+
+$queryData = $bdd->prepare("SELECT * FROM company ORDER BY creation_date DESC limit 5"); 
+$queryData->execute(array());
+
+while ($resultat = $queryData->fetch()) {
+?>
+      <td><?=$resultat['comp_name']?></td>
+      <td><?=$resultat['vat_number']?></td>
+      <td><?=$resultat['country']?></td>
+      <td><?=$resultat['comp_type']?></td>
+      <td><?=$resultat['creation_date']?></td>
     </tr>
-    <tr>
-      <th scope="row">Default</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-primary">
-      <th scope="row">Primary</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-secondary">
-      <th scope="row">Secondary</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-success">
-      <th scope="row">Success</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-danger">
-      <th scope="row">Danger</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-warning">
-      <th scope="row">Warning</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-info">
-      <th scope="row">Info</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-light">
-      <th scope="row">Light</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-dark">
-      <th scope="row">Dark</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
+<?php
+};
+?> 
   </tbody>
 </table>

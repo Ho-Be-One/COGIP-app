@@ -18,7 +18,7 @@ connected();
                 <label class="form-control-label">Adresse mail</label>
                 <input type="text" name="mail" value="<?php if(isset($_POST['mail'])){echo $_POST['mail'];}?>"
                        placeholder="Adresse mail"
-                       class="form-control <?php if(array_key_exists('mail',$erreur)){echo "is-invalid";}?>"" id="inputInvalid">
+                       class="form-control <?php if(array_key_exists('mail',$erreur)){echo "is-invalid";}?>" id="inputInvalid">
                 <div class="invalid-feedback"><?php if(array_key_exists('mail',$erreur)){echo $erreur['mail'];}?></div>
             </div>
 
