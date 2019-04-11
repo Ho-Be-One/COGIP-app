@@ -9,9 +9,6 @@ noConnected();
 <div class="container pb-5">
 <br>
 <p class="text-center">Nouvelle société</p>
-<?php
-		include './flash-alert.php';
-?>
 <div class="card bg-light">
 <article class="card-body mx-auto col-xl-5" >
 

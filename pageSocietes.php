@@ -2,11 +2,17 @@
 include './assets/ins/function.php';
 include './head/header.php';
 include './head/menu.php';
+
 noConnected();
+
 ?>
-<div class="container col-xl-6">
+
+<div class="container col-xl-6" style="text-align:center">
+<?php
+include './flash-alert.php';
+?>
     <h1 class="p-5">Annuaire des sociétés</h1>
-    <div class="clients col-xl-6">
+    <div class="clients col-xl-12">
     <h2>Clients</h2>
     <table class="table table-hover">
   <thead>
@@ -14,6 +20,14 @@ noConnected();
       <th scope="col">Nom</th>
       <th scope="col">TVA</th>
       <th scope="col">Pays</th>
+      <?php
+      if($_SESSION['auth']['level']=='godmode')
+                {?>
+      <th scope="col"><i class="fa fa-pencil"></i></th>
+      <th scope="col"><i class="fa fa-trash-o"></i></th>
+      <?php
+                }
+      ?>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +40,17 @@ $queryData->execute(array());
 
 while ($resultat = $queryData->fetch()) {
 ?>
-      <td><?=$resultat['comp_name']?></td>
+      <td><a href='detailSociete.php<?='?company='.$resultat['comp_name']?>'><?=$resultat['comp_name']?></a></td>
       <td><?=$resultat['vat_number']?></td>
       <td><?=$resultat['country']?></td>
+      <?php
+        if($_SESSION['auth']['level']=='godmode')
+                {?>
+      <th scope="col"><i class="fa fa-pencil"></i></th>
+      <th scope="col"><a href='deleteSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-trash-o"></i></a></th>
+      <?php
+                }
+      ?>
     </tr>
 <?php
 };
@@ -36,7 +58,7 @@ while ($resultat = $queryData->fetch()) {
   </tbody>
 </table>
     </div>
-    <div class="fournisseurs col-xl-6"></div>
+    <div class="fournisseurs col-xl-12"></div>
     <h2>Fournisseurs</h2>
     <table class="table table-hover">
   <thead>
@@ -44,6 +66,14 @@ while ($resultat = $queryData->fetch()) {
       <th scope="col">Nom</th>
       <th scope="col">TVA</th>
       <th scope="col">Pays</th>
+      <?php
+      if($_SESSION['auth']['level']=='godmode')
+                {?>
+      <th scope="col"><i class="fa fa-pencil"></i></th>
+      <th scope="col"><i class="fa fa-trash-o"></i></th>
+      <?php
+                }
+      ?>
     </tr>
   </thead>
   <tbody>
@@ -54,9 +84,17 @@ $queryData->execute(array());
 
 while ($resultat = $queryData->fetch()) {
 ?>
-      <td><?=$resultat['comp_name']?></td>
+      <td><a href='detailSociete.php<?='?company='.$resultat['comp_name']?>'><?=$resultat['comp_name']?></a></td>
       <td><?=$resultat['vat_number']?></td>
       <td><?=$resultat['country']?></td>
+      <?php
+        if($_SESSION['auth']['level']=='godmode')
+                {?>
+      <th scope="col"><i class="fa fa-pencil"></i></th>
+      <th scope="col"><a href='deleteSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-trash-o"></i></a></th>
+      <?php
+                }
+      ?>
     </tr>
 <?php
 };

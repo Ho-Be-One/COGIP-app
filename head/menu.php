@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container col-xl-6 ">
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" href="index.php">
+        <img src="/assets/img/CogipLogo.png" width="70" alt="logo entreprise Cogip">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

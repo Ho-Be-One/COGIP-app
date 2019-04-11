@@ -13,12 +13,6 @@ if (isset($_POST['submit']) && isset($_POST['companyName']) && isset($_POST['com
 if (empty($company)){
 	$erreur['company']='Indiquer un <b>Nom de Société</b> !';
 	}
-	// else{
-	// $ValideEmail=(preg_match('#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,5}$#',$mail))?$mail:null;
-	// if (empty($ValideEmail)){
-	// 	$erreur['mail']='Le format de <b>l\'adresse mail</b> est incorrecte';
-	// 		}
-	// }
 	
 //// country ////////////////////////////////////////////////////////////////////////////////
 if (empty($country)){
@@ -58,6 +52,8 @@ if (empty($erreur)){
 		$insertData->bindParam(':compcreation', $creation);
 		$insertData->bindParam(':comptype', $type);
 		$insertData->execute();
-		$_SESSION["flash"]["Success"]="Les données ont été ajoutées";
+		$_SESSION['flash']['success']="Les données ont été ajoutées";
+		header('Location:pageSocietes.php');
+		
 }
 }

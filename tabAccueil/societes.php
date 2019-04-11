@@ -7,7 +7,6 @@
       <th scope="col">TVA</th>
       <th scope="col">Pays</th>
       <th scope="col">Type</th>
-      <th scope="col">Date de création</th>
     </tr>
   </thead>
   <tbody>
@@ -24,7 +23,6 @@ while ($resultat = $queryData->fetch()) {
       <td><?=$resultat['vat_number']?></td>
       <td><?=$resultat['country']?></td>
       <td><?=$resultat['comp_type']?></td>
-      <td><?=$resultat['creation_date']?></td>
     </tr>
 <?php
 };
