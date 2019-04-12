@@ -34,9 +34,10 @@ if (empty($vat)){
 	include "./assets/connexion/bd.php";
 
 // vérification si le n° de TVA existe déjà dans la base de données
-		$queryData = $bdd->prepare("SELECT * FROM company WHERE vat_number=:vat"); 
+		$queryData = $bdd->prepare("SELECT * FROM company WHERE vat_number=:vat AND id_company!=:id_company"); 
 		$queryData->execute(array(
-		'vat' => $vat
+		'vat' => $vat,
+		'id_company' => $_GET['companyid']
 		)); 
 		$rows = $queryData->rowCount();
 		
@@ -44,7 +45,17 @@ if (empty($vat)){
 			$erreur['vat']='Ce <b>numéro de TVA</b> existe déjà!';
 		}
 if (empty($erreur)){
-
+	if($_POST['modif'] == 'modif'){
+	$modifyData = $bdd->prepare("UPDATE company SET comp_name=:company,country=:newCountry,vat_number=:newVat,comp_type=:newType WHERE id_company=:id_company");
+	$modifyData->execute(array(
+		'company'=> $company,
+		'newCountry' => $country,
+		'newVat'=> $vat,
+		'newType' => $type,
+		'id_company' => $_GET['companyid']
+	));
+	$_SESSION['flash']['success']="Les données ont été modifiées";
+	}else{
 		$insertData = $bdd->prepare("INSERT INTO company (comp_name,country,vat_number,creation_date,comp_type) VALUES (:compname,:compcountry,:compvat,:compcreation,:comptype)");
 		$insertData->bindParam(':compname', $company);
 		$insertData->bindParam(':compcountry', $country);
@@ -52,7 +63,7 @@ if (empty($erreur)){
 		$insertData->bindParam(':compcreation', $creation);
 		$insertData->bindParam(':comptype', $type);
 		$insertData->execute();
-		$_SESSION['flash']['success']="Les données ont été ajoutées";
+		$_SESSION['flash']['success']="Les données ont été ajoutées";}
 		header('Location:pageSocietes.php');
 		
 }

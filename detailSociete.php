@@ -7,7 +7,7 @@ include "./assets/connexion/bd.php";
 
 ?>
 
-<div class="container col-xl-12">
+<div class="container col-xl-6">
     <h1 class="p-5" style="text-align:center">Société: <?=$_GET['company']?></h1>
     <h2>Personnes de contact</h2>
     <table class="table table-hover">

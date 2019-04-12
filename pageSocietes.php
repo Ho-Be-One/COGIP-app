@@ -46,7 +46,7 @@ while ($resultat = $queryData->fetch()) {
       <?php
         if($_SESSION['auth']['level']=='godmode')
                 {?>
-      <th scope="col"><i class="fa fa-pencil"></i></th>
+      <th scope="col"><a href='newSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-pencil"></i></th>
       <th scope="col"><a href='deleteSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-trash-o"></i></a></th>
       <?php
                 }
@@ -90,7 +90,7 @@ while ($resultat = $queryData->fetch()) {
       <?php
         if($_SESSION['auth']['level']=='godmode')
                 {?>
-      <th scope="col"><i class="fa fa-pencil"></i></th>
+      <th scope="col"><a href='newSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-pencil"></i></th>
       <th scope="col"><a href='deleteSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-trash-o"></i></a></th>
       <?php
                 }
