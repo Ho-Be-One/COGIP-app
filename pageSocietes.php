@@ -23,8 +23,9 @@ include './flash-alert.php';
       <?php
       if($_SESSION['auth']['level']=='godmode')
                 {?>
+      <th scope="col"><i class="fa fa-eye"></i></th>
       <th scope="col"><i class="fa fa-pencil"></i></th>
-      <th scope="col"><i class="fa fa-trash-o"></i></th>
+      <th scope="col"><i class="fa fa-times"></i></th>
       <?php
                 }
       ?>
@@ -40,14 +41,15 @@ $queryData->execute(array());
 
 while ($resultat = $queryData->fetch()) {
 ?>
-      <td><a href='detailSociete.php<?='?company='.$resultat['comp_name']?>'><?=$resultat['comp_name']?></a></td>
+      <td><?=$resultat['comp_name']?></a></td>
       <td><?=$resultat['vat_number']?></td>
       <td><?=$resultat['country']?></td>
       <?php
         if($_SESSION['auth']['level']=='godmode')
                 {?>
-      <th scope="col"><a href='newSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-pencil"></i></th>
-      <th scope="col"><a href='deleteSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-trash-o"></i></a></th>
+      <td><a href='detailSociete.php<?='?company='.$resultat['comp_name']?>'><i class="fa fa-eye"></i></a></td>
+      <td scope="col"><a href='newSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-pencil"></i></a></td>
+      <td scope="col"><a href='deleteSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-times text-danger"></i></a></td>
       <?php
                 }
       ?>
@@ -69,8 +71,9 @@ while ($resultat = $queryData->fetch()) {
       <?php
       if($_SESSION['auth']['level']=='godmode')
                 {?>
+      <th scope="col"><i class="fa fa-eye"></i></th>          
       <th scope="col"><i class="fa fa-pencil"></i></th>
-      <th scope="col"><i class="fa fa-trash-o"></i></th>
+      <th scope="col"><i class="fa fa-times" ></i></th>
       <?php
                 }
       ?>
@@ -84,14 +87,15 @@ $queryData->execute(array());
 
 while ($resultat = $queryData->fetch()) {
 ?>
-      <td><a href='detailSociete.php<?='?company='.$resultat['comp_name']?>'><?=$resultat['comp_name']?></a></td>
+      <td><?=$resultat['comp_name']?></td>
       <td><?=$resultat['vat_number']?></td>
       <td><?=$resultat['country']?></td>
       <?php
         if($_SESSION['auth']['level']=='godmode')
                 {?>
-      <th scope="col"><a href='newSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-pencil"></i></th>
-      <th scope="col"><a href='deleteSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-trash-o"></i></a></th>
+      <td><a href='detailSociete.php<?='?company='.$resultat['comp_name']?>'><i class="fa fa-eye"></i></a></td>
+      <td><a href='newSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-pencil"></i></td>
+      <td><a href='deleteSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-times text-danger"></i></a></td>
       <?php
                 }
       ?>
