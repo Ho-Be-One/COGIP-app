@@ -48,8 +48,8 @@ while ($resultat = $queryData->fetch()) {
         if($_SESSION['auth']['level']=='godmode')
                 {?>
       <td><a href='detailSociete.php<?='?company='.$resultat['comp_name']?>'><i class="fa fa-eye"></i></a></td>
-      <td scope="col"><a href='newSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-pencil"></i></a></td>
-      <td scope="col"><a href='deleteSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-times text-danger"></i></a></td>
+      <td><a href='newSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-pencil"></i></a></td>
+      <td><a href='deleteSociete.php<?='?companyid='.$resultat['id_company']?>'><i class="fa fa-times text-danger"></i></a></td>
       <?php
                 }
       ?>
