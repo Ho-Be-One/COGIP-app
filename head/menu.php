@@ -1,25 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container col-xl-6 ">
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" href="index.php">
+        <img src="./assets/img/CogipLogo.png" width="70" alt="logo entreprise Cogip">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="accueil.php"><i class="fa fa-home"></i> Accueil <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="accueil.php"><i class="fa fa-home"></i> Accueil <span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="factures.php"><i class="fa fa-file-o"></i> Factures</a>
+                    <a class="nav-link" href="pageFactures.php"><i class="fa fa-file-o"></i> Factures</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="societes.php"><i class="fa fa-building"></i> Sociétés</a>
+                    <a class="nav-link" href="pageSocietes.php"><i class="fa fa-building"></i> Sociétés</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-envelope-open"></i> Contact</a>
+                    <a class="nav-link" href="pageContacts.php"><i class="fa fa-envelope-open"></i> Contact</a>
                 </li>
                 <?php
-                if($_SESSION['auth']['level']==3)
+                if($_SESSION['auth']['level']=="godmode"||$_SESSION['auth']['level']=="modemodo")
                 {
                 ?>
                 <li class="nav-item dropdown">
@@ -29,7 +31,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Dashboard</a>
                     <a class="dropdown-item" href="newContact.php">Nouveau contact</a>
-                    <a class="dropdown-item" href="newfacture.php">Nouvelle facture</a>
+                    <a class="dropdown-item" href="newFacture.php">Nouvelle facture</a>
                     <a class="dropdown-item" href="newSociete.php">Nouvelle société</a>
                     </div>
                 </li>

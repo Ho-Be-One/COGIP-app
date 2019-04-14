@@ -1,4 +1,5 @@
 <?php session_start();
+// include './assets/connexion/bd.php';
 include './assets/ins/function.php';
 include './assets/ctrl/login-ctrl.php';
 include './head/header.php';
