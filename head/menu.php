@@ -6,20 +6,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="accueil.php"><i class="fa fa-home"></i> Accueil <span class="sr-only">(current)</span></a>
+                <li class="nav-item <?php if($url[0] == 'accueil'){echo "active";} ?>">
+                    <a class="nav-link" href="../accueil/01"><i class="fa fa-home"></i> Accueil <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="factures.php"><i class="fa fa-file-o"></i> Factures</a>
+                <li class="nav-item <?php if($url[0] == 'factures'){echo "active";} ?>">
+                    <a class="nav-link" href="../factures/02"><i class="fa fa-file-o"></i> Factures</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="societes.php"><i class="fa fa-building"></i> Sociétés</a>
+                <li class="nav-item <?php if($url[0] == 'company'){echo "active";}?>">
+                    <a class="nav-link" href="../company/03"><i class="fa fa-building"></i> Sociétés</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-envelope-open"></i> Contact</a>
+                <li class="nav-item <?php if($url[0] == 'contacts'){echo "active";} ?>">
+                    <a class="nav-link" href="../contacts/04"><i class="fa fa-envelope-open"></i> Contact</a>
                 </li>
                 <?php
-                if($_SESSION['auth']['level']==3)
+                if($_SESSION['auth']['level']=='godmode')
                 {
                 ?>
                 <li class="nav-item dropdown">
@@ -28,7 +28,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Dashboard</a>
-                    <a class="dropdown-item" href="newContact.php">Nouveau contact</a>
+                    <a class="dropdown-item" href="../newContact/00">Nouveau contact</a>
                     <a class="dropdown-item" href="newfacture.php">Nouvelle facture</a>
                     <a class="dropdown-item" href="newSociete.php">Nouvelle société</a>
                     </div>
@@ -42,9 +42,21 @@
                     <strong><?= $_SESSION['auth']['first_name'].' '.$_SESSION['auth']['last_name'] ?></strong>
                 </li>
             </ul>
+            <?php
+            if ($_SESSION['auth']) {
+            ?>
             <form class="form-inline my-2 my-lg-0">
-            <a href="logout.php" class="btn btn-danger my-2 my-sm-0"><i class="fa fa-power-off"></i></a>
+            <a href="../logout/08" class="btn btn-danger my-2 my-sm-0"><i class="fa fa-power-off"></i> LogOut</a>
             </form>
+            <?php
+            }else{
+            ?>
+            <form class="form-inline my-2 my-lg-0">
+            <a href="../connexion/09" class="btn btn-warning my-2 my-sm-0"><i class="fa fa-power-off"></i> logIn</a>
+            </form>
+            <?php
+            }
+            ?>            
         </div>
     </div>
 </nav>
