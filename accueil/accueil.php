@@ -36,4 +36,3 @@ $limit = 5;
 <?php
 include './foot/footer.php';
 ?>
-<!-- is-invalid -->
