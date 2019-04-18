@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
+// session_start();
+>>>>>>> a51b41b0b7271077e13ea92f920075f7dde164de
 function noConnected(){
 	if(session_status() == PHP_SESSION_NONE){
 	session_start();
