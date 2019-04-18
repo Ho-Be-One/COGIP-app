@@ -7,11 +7,18 @@ if(isset($_SESSION['auth'])){
 	setcookie('remember',NULL, -1);
 	session_start();
 	$_SESSION['flash']['info']="Vous avez été déconnecté.";
-	header("Location:index.php");
-	exit();
+	?>
+	<script LANGUAGE="JavaScript">
+	document.location.href="../accueil/01"
+	</script>
+	<?php
 	}
 	else
 		{
-		die(header("Location:index.php"));
+		?>
+		<script LANGUAGE="JavaScript">
+		document.location.href="../accueil/01"
+		</script>
+		<?php
 		}
 ?>

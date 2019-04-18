@@ -2,14 +2,12 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Apr 09, 2019 at 12:58 PM
--- Server version: 5.7.24
--- PHP Version: 7.2.11
+-- Host: localhost:8889
+-- Generation Time: Apr 12, 2019 at 01:53 PM
+-- Server version: 5.7.25
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -36,19 +34,20 @@ CREATE TABLE `company` (
   `country` varchar(45) DEFAULT NULL,
   `vat_number` varchar(45) DEFAULT NULL,
   `creation_date` datetime DEFAULT NULL,
-  `type` enum('client','fournisseur') DEFAULT NULL
+  `comp_type` enum('client','fournisseur') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`id_company`, `comp_name`, `country`, `vat_number`, `creation_date`, `type`) VALUES
+INSERT INTO `company` (`id_company`, `comp_name`, `country`, `vat_number`, `creation_date`, `comp_type`) VALUES
 (5, 'BeCode', 'Belgique', 'BE0664802168', '2019-01-24 09:07:00', 'client'),
 (6, 'Atoma', 'Belgique', 'BE0403523859', '2019-01-24 09:22:00', 'fournisseur'),
-(7, 'Google', 'France', 'FR79799769161', '2019-02-14 13:12:00', 'client'),
-(8, 'Eat Well', 'Belgium', 'BE0823234743', '2019-02-25 00:00:00', 'fournisseur'),
-(9, 'Père-Noël', 'Islande', 'IS0679224820', '2019-03-06 09:16:00', 'client');
+(7, 'Google', 'France', 'FR79799769987', '2019-02-14 13:12:00', 'client'),
+(8, 'Eat Well', 'Belgique', 'BE0823234743', '2019-02-25 00:00:00', 'fournisseur'),
+(9, 'Père-Noël', 'Islande', 'IS0679224821', '2019-03-06 09:16:00', 'fournisseur'),
+(49, 'dsfs', 'France', 'DE34561234567', '2019-04-12 15:19:57', 'client');
 
 -- --------------------------------------------------------
 
@@ -70,13 +69,13 @@ CREATE TABLE `contacts` (
 -- Dumping data for table `contacts`
 --
 
-INSERT INTO `contacts` (`id_contacts`, `last_name`, `first_name`, `creation_date`, `mail`, `company_id_company`, `Telephone`) VALUES
-(5, 'Flabat', 'Kevin', '2019-01-24 09:08:00', 'kevin.flabat@becode.com', 5, '+32487 44 80 49'),
-(6, 'Favier', 'Sophie', '2019-01-24 09:26:00', 'soso.favier@atoma.be', 6, '+3223432887'),
-(7, 'Page', 'Larry ', '2019-02-14 13:16:00', 'larry.p@gmail.com', 7, '+330811640017'),
-(8, 'Brin', 'Sergey', '2019-02-14 13:28:00', 'brin.s@gmail.com', 7, '+330811640022'),
-(9, 'Père', 'Noël', '2019-03-06 16:13:00', 'père_noël@cerfs.com', 9, '+35405639876128899'),
-(10, 'Sunny', 'Sun', '2019-02-25 18:12:00', 'sunny@eatwell.be', 8, '+3224376595');
+-- INSERT INTO `contacts` (`id_contacts`, `last_name`, `first_name`, `creation_date`, `mail`, `company_id_company`, `Telephone`) VALUES
+-- (5, 'Flabat', 'Kevin', '2019-01-24 09:08:00', 'kevin.flabat@becode.com', 5, '+32487 44 80 49'),
+-- (6, 'Favier', 'Sophie', '2019-01-24 09:26:00', 'soso.favier@atoma.be', 6, '+3223432887'),
+-- (7, 'Page', 'Larry ', '2019-02-14 13:16:00', 'larry.p@gmail.com', 7, '+330811640017'),
+-- (8, 'Brin', 'Sergey', '2019-02-14 13:28:00', 'brin.s@gmail.com', 7, '+330811640022'),
+-- (9, 'Père', 'Noël', '2019-03-06 16:13:00', 'père_noël@cerfs.com', 9, '+35405639876128899'),
+-- (10, 'Sunny', 'Sun', '2019-02-25 18:12:00', 'sunny@eatwell.be', 8, '+3224376595');
 
 -- --------------------------------------------------------
 
@@ -86,7 +85,7 @@ INSERT INTO `contacts` (`id_contacts`, `last_name`, `first_name`, `creation_date
 
 CREATE TABLE `invoice` (
   `id_invoice` int(11) NOT NULL,
-  `number` int(11) DEFAULT NULL,
+  `invoice_numb` int(11) DEFAULT NULL,
   `invoiced_date` date DEFAULT NULL,
   `service_date` date DEFAULT NULL,
   `contacts_id_contacts` int(11) NOT NULL,
@@ -97,7 +96,7 @@ CREATE TABLE `invoice` (
 -- Dumping data for table `invoice`
 --
 
-INSERT INTO `invoice` (`id_invoice`, `number`, `invoiced_date`, `service_date`, `contacts_id_contacts`, `company_id_company`) VALUES
+INSERT INTO `invoice` (`id_invoice`, `invoice_numb`, `invoiced_date`, `service_date`, `contacts_id_contacts`, `company_id_company`) VALUES
 (2, 2019001, '2019-01-28', '2019-01-25', 5, 5),
 (3, 2019002, '2019-01-28', '2019-04-28', 6, 6),
 (4, 2019003, '2019-02-19', '2019-02-17', 7, 7),
@@ -168,7 +167,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `id_company` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_company` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `contacts`
@@ -201,10 +200,9 @@ ALTER TABLE `contacts`
 --
 -- Constraints for table `invoice`
 --
-ALTER TABLE `invoice`
-  ADD CONSTRAINT `fk_invoice_company1` FOREIGN KEY (`company_id_company`) REFERENCES `company` (`id_company`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_invoice_contacts1` FOREIGN KEY (`contacts_id_contacts`) REFERENCES `contacts` (`id_contacts`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
+-- ALTER TABLE `invoice`
+--   ADD CONSTRAINT `fk_invoice_company1` FOREIGN KEY (`company_id_company`) REFERENCES `company` (`id_company`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+--   ADD CONSTRAINT `fk_invoice_contacts1` FOREIGN KEY (`contacts_id_contacts`) REFERENCES `contacts` (`id_contacts`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
