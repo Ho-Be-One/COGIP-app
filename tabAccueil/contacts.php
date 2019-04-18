@@ -42,7 +42,7 @@ $listContact->execute(array());
       <?php
       if($_SESSION['auth']['level'] == 'godmode'){ 
       ?>
-      <td><a href="../newContact/<?= $value['id_contacts'];?>" class="text-success"><i class="fa fa-pencil"></i></a></td>
+      <td class="text-center"><a href="../newContact/<?= $value['id_contacts'];?>" class="text-success"><i class="fa fa-pencil"></i></a></td>
       <td><a href="../deleteContact/<?= $value['id_contacts'];?>-<?= $value['id_company'];?>" class="text-danger"><i class="fa fa-times"></i></a></td>
       <?php
       }

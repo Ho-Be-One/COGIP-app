@@ -6,7 +6,7 @@ include './head/menu.php';
 noConnected();
 include "./assets/connexion/bd.php";
 $queryModify = $bdd->prepare("SELECT * FROM company WHERE id_company = ?");
-$queryModify->execute(array($_GET['companyid']));
+$queryModify->execute(array($_GET['id']));
 $resultat = $queryModify->fetch();
 $row = $queryModify->rowCount();
 ?>
@@ -44,7 +44,6 @@ $row = $queryModify->rowCount();
     <div class="form-group has-danger">
     <label class="form-control-label" for="inputDanger1">Type de société</label>
     <select class="form-control" name="companyType" required>
-
         <option value="client" <?php if($_POST['companyType']=='client'){echo 'selected';}else{if($resultat['comp_type'] == 'client'){echo 'selected';}}?>>client</option>
         <option value="fournisseur" <?php if($_POST['companyType']=='fournisseur'){echo 'selected';}else{if($resultat['comp_type'] == 'fournisseur'){echo 'selected';}}?>>fournisseur</option>
     </select>

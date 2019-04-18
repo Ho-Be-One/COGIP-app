@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container col-xl-6 ">
         <a class="navbar-brand" href="index.php">
-        <img src="/assets/img/CogipLogo.png" width="70" alt="logo entreprise Cogip">
+        <!-- <img src="/assets/img/CogipLogo.png" width="70" alt="logo entreprise Cogip"> -->CO
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@
                     <a class="dropdown-item" href="#">Dashboard</a>
                     <a class="dropdown-item" href="../newContact/00">Nouveau contact</a>
                     <a class="dropdown-item" href="newfacture.php">Nouvelle facture</a>
-                    <a class="dropdown-item" href="newSociete.php">Nouvelle société</a>
+                    <a class="dropdown-item" href="../newSociete/00">Nouvelle société</a>
                     </div>
                 </li>
                 <?php

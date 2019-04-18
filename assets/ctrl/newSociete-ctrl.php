@@ -37,7 +37,7 @@ if (empty($vat)){
 		$queryData = $bdd->prepare("SELECT * FROM company WHERE vat_number=:vat AND id_company!=:id_company"); 
 		$queryData->execute(array(
 		'vat' => $vat,
-		'id_company' => $_GET['companyid']
+		'id_company' => $_GET['id']
 		)); 
 		$rows = $queryData->rowCount();
 		
@@ -52,9 +52,10 @@ if (empty($erreur)){
 		'newCountry' => $country,
 		'newVat'=> $vat,
 		'newType' => $type,
-		'id_company' => $_GET['companyid']
+		'id_company' => $_GET['id']
 	));
 	$_SESSION['flash']['success']="Les données ont été modifiées";
+	header('Location:../company/03');
 	}else{
 		$insertData = $bdd->prepare("INSERT INTO company (comp_name,country,vat_number,creation_date,comp_type) VALUES (:compname,:compcountry,:compvat,:compcreation,:comptype)");
 		$insertData->bindParam(':compname', $company);
@@ -64,7 +65,7 @@ if (empty($erreur)){
 		$insertData->bindParam(':comptype', $type);
 		$insertData->execute();
 		$_SESSION['flash']['success']="Les données ont été ajoutées";}
-		header('Location:pageSocietes.php');
+		header('Location:../company/03');
 		
 }
 }
