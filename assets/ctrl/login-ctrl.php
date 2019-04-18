@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (isset($_POST['submit']) && isset($_POST['mail']) && isset($_POST['mdp'])){
 
 	date_default_timezone_set('Europe/Brussels');

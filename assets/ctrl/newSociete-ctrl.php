@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (isset($_POST['submit']) && isset($_POST['companyName']) && isset($_POST['companyCountry']) && isset($_POST['companyVat']) && isset($_POST['companyType'])){
 	date_default_timezone_set('Europe/Brussels');
 	$company = htmlspecialchars(trim($_POST['companyName']));
@@ -45,6 +44,7 @@ if (empty($vat)){
 			$erreur['vat']='Ce <b>numéro de TVA</b> existe déjà!';
 		}
 if (empty($erreur)){
+	session_start();
 	if($_POST['modif'] == 'modif'){
 	$modifyData = $bdd->prepare("UPDATE company SET comp_name=:company,country=:newCountry,vat_number=:newVat,comp_type=:newType WHERE id_company=:id_company");
 	$modifyData->execute(array(

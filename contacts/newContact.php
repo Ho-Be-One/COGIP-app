@@ -104,5 +104,5 @@ $queryCompany->execute(array());
 
 </div> 
 <?php
-include '../foot/footer.php';
+include './foot/footer.php';
 ?>

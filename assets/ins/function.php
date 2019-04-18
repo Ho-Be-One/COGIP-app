@@ -1,5 +1,4 @@
 <?php
-session_start();
 function noConnected(){
 	if(session_status() == PHP_SESSION_NONE){
 	session_start();

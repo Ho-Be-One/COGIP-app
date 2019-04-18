@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (isset($_POST['submit'])){
 
     $mail = htmlspecialchars(trim($_POST['mail']));
@@ -65,7 +64,7 @@ if (isset($_POST['submit'])){
     }
 
     if (empty($erreur)){
-       
+        session_start();
         if(isset($_POST['code'])){
             if($_POST['code'] == 'modif007'){
 

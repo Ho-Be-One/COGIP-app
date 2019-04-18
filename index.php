@@ -15,6 +15,15 @@ elseif($url[0] == 'accueil' AND !empty($_GET['id'])){
 elseif($url[0] == 'factures' AND !empty($_GET['id'])){
     require './factures/factures.php';
 }
+elseif($url[0] == 'newfacture' AND !empty($_GET['id'])){
+    require './factures/newfacture.php';
+}
+elseif($url[0] == 'detailFactures' AND !empty($_GET['id'])){
+    require './factures/detailFactures.php';
+}
+elseif($url[0] == 'deleteFacture' AND !empty($_GET['id'])){
+    require './factures/deleteFacture.php';
+}
 // COMPANY ////////////////////////////////////////////////////////////
 elseif($url[0] == 'company' AND !empty($_GET['id'])){
     require './company/company.php';

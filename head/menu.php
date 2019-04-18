@@ -31,7 +31,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Dashboard</a>
                     <a class="dropdown-item" href="../newContact/00">Nouveau contact</a>
-                    <a class="dropdown-item" href="newfacture.php">Nouvelle facture</a>
+                    <a class="dropdown-item" href="../newfacture/00">Nouvelle facture</a>
                     <a class="dropdown-item" href="../newSociete/00">Nouvelle société</a>
                     </div>
                 </li>
