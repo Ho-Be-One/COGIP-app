@@ -1,8 +1,4 @@
 <?php
-<<<<<<< HEAD
-=======
-session_start();
->>>>>>> a51b41b0b7271077e13ea92f920075f7dde164de
 if (isset($_POST['submit']) && isset($_POST['companyName']) && isset($_POST['companyCountry']) && isset($_POST['companyVat']) && isset($_POST['companyType'])){
 	date_default_timezone_set('Europe/Brussels');
 	$company = htmlspecialchars(trim($_POST['companyName']));
@@ -21,10 +17,6 @@ if (empty($company)){
 if (empty($country)){
 	$erreur['country']='Entrez <b>un pays</b> !';
 	}
-<<<<<<< HEAD
-
-=======
->>>>>>> a51b41b0b7271077e13ea92f920075f7dde164de
 //// N° de TVA ////////////////////////////////////////////////////////////////////////////////
 if (empty($vat)){
 	$erreur['vat']='Entrez <b>un numéro de TVA</b> !';
@@ -35,20 +27,14 @@ if (empty($vat)){
 		$erreur['vat']='Le format du <b>numéro de TVA</b> est incorrect';
 			}
 	}
-<<<<<<< HEAD
 
 	// 		/* connexion a la base */
 	include "./assets/connexion/bd.php";
 
-=======
-	// 		/* connexion a la base */
-	include "./assets/connexion/bd.php";
->>>>>>> a51b41b0b7271077e13ea92f920075f7dde164de
 // vérification si le n° de TVA existe déjà dans la base de données
 		$queryData = $bdd->prepare("SELECT * FROM company WHERE vat_number=:vat AND id_company!=:id_company"); 
 		$queryData->execute(array(
 		'vat' => $vat,
-<<<<<<< HEAD
 		'id_company' => $_GET['id']
 =======
 		'id_company' => $_GET['companyid']
@@ -60,10 +46,7 @@ if (empty($vat)){
 			$erreur['vat']='Ce <b>numéro de TVA</b> existe déjà!';
 		}
 if (empty($erreur)){
-<<<<<<< HEAD
 	session_start();
-=======
->>>>>>> a51b41b0b7271077e13ea92f920075f7dde164de
 	if($_POST['modif'] == 'modif'){
 	$modifyData = $bdd->prepare("UPDATE company SET comp_name=:company,country=:newCountry,vat_number=:newVat,comp_type=:newType WHERE id_company=:id_company");
 	$modifyData->execute(array(
@@ -71,16 +54,10 @@ if (empty($erreur)){
 		'newCountry' => $country,
 		'newVat'=> $vat,
 		'newType' => $type,
-<<<<<<< HEAD
 		'id_company' => $_GET['id']
 	));
 	$_SESSION['flash']['success']="Les données ont été modifiées";
 	header('Location:../company/03');
-=======
-		'id_company' => $_GET['companyid']
-	));
-	$_SESSION['flash']['success']="Les données ont été modifiées";
->>>>>>> a51b41b0b7271077e13ea92f920075f7dde164de
 	}else{
 		$insertData = $bdd->prepare("INSERT INTO company (comp_name,country,vat_number,creation_date,comp_type) VALUES (:compname,:compcountry,:compvat,:compcreation,:comptype)");
 		$insertData->bindParam(':compname', $company);
@@ -90,11 +67,7 @@ if (empty($erreur)){
 		$insertData->bindParam(':comptype', $type);
 		$insertData->execute();
 		$_SESSION['flash']['success']="Les données ont été ajoutées";}
-<<<<<<< HEAD
 		header('Location:../company/03');
-=======
-		header('Location:pageSocietes.php');
->>>>>>> a51b41b0b7271077e13ea92f920075f7dde164de
 		
 }
 }

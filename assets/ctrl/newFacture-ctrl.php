@@ -1,7 +1,4 @@
 <?php
-// session_start();
-
-<<<<<<< HEAD
 /////
 if (isset($_POST['submit']) && isset($_POST['idContact']) && isset($_POST['idCompany']) && isset($_POST['invoiceNum']) && isset($_POST['invoicedDate']) && isset($_POST['serviceDate'])){
 	date_default_timezone_set('Europe/Brussels');
@@ -68,25 +65,12 @@ if (empty($invoiceNum)){
     ));
 $_SESSION['flash']['success']="Les données ont été modifiées";
 }else{
-=======
-if (isset($_GET['submit']) && isset($_GET['invoiceNum'])){
-	// date_default_timezone_set('Europe/Brussels');
-	// $invoiceNum = htmlspecialchars(trim($_GET['invoiceNum']));  
-    // $erreur=array();
-    
-///////Connexion a la db
-	include "./assets/connexion/bd.php";
-
-//////Insertion de nouvelles données ds la db SI le bouton est défini
-
->>>>>>> a51b41b0b7271077e13ea92f920075f7dde164de
     $req = $bdd->prepare('INSERT INTO invoice (contacts_id_contacts, company_id_company, invoice_num, invoiced_date, service_date) VALUES (?,?,?,?,?)');
     
 	$req->execute(array(
         $_POST['idContact'],
         $_POST['idCompany'],
 		$_POST['invoiceNum'],
-<<<<<<< HEAD
 		$dateInvoice,
 		$dateService,
     ));
@@ -95,12 +79,4 @@ if (isset($_GET['submit']) && isset($_GET['invoiceNum'])){
     header('Location:newFacture.php');
 }
 }
-=======
-		$_POST['invoicedDate'],
-		$_POST['serviceDate'],
-    ));
-    $_SESSION['flash']['success']="Les données ont été ajoutées";
-    header('Location:newFacture.php');
-}
->>>>>>> a51b41b0b7271077e13ea92f920075f7dde164de
 ?>
