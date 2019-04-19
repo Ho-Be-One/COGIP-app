@@ -36,9 +36,6 @@ if (empty($vat)){
 		$queryData->execute(array(
 		'vat' => $vat,
 		'id_company' => $_GET['id']
-=======
-		'id_company' => $_GET['companyid']
->>>>>>> a51b41b0b7271077e13ea92f920075f7dde164de
 		)); 
 		$rows = $queryData->rowCount();
 		
