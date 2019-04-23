@@ -40,7 +40,7 @@ $value = $contact->fetch();
             ?>
                 <tr>
                 <th><?= $key ?></th>
-                <td><?= $echoValue['invoice_numb'];?></td>
+                <td><?= $echoValue['invoice_num'];?></td>
                 <td><?= $echoValue = date('d-m-Y', strtotime($echoValue['invoiced_date']));?></td>
                 </tr>
             <?php

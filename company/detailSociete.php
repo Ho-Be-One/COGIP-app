@@ -82,7 +82,7 @@ $nameComp = $queryDataContact->fetch();
 
         while ($resultat = $queryDataInvoice->fetch()) {
         ?>
-        <td><?=$resultat['invoice_numb']?></td>
+        <td><?=$resultat['invoice_num']?></td>
         <td><?=$resultat['invoiced_date']?></td>
         <td><?=$resultat['first_name'].' '.$resultat['last_name']?></td>
         <td class="text-center"><a href="../detailContact/<?= $resultat['id_contacts'];?>"><i class="fa fa-eye"></i></a></td>

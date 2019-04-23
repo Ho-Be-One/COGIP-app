@@ -10,61 +10,57 @@ include './assets/connexion/bd.php';
 // $rec = explode('-','$lastName');
 // var_dump $rec;
 
-$queryModify = $bdd->prepare("SELECT * FROM invoice WHERE id_invoice = ?");
-$queryModify->execute(array($_GET["id"]));
-$result = $queryModify->fetch();
-$row = $queryModify->rowCount();
+$idBis=explode ("&", $_GET['id']);
+
+if(isset($_GET['id'])){
+$invoiceModify = $bdd->prepare("SELECT * FROM invoice WHERE invoice_num =:invoice_num");
+$invoiceModify->execute(array('invoice_num'=>$_GET['id']));
+$resultat = $invoiceModify->fetch();
+$row = $invoiceModify->rowCount();
+}
+
+// vérification si le mail existe et recupération du mot de passe
+$queryInvoice = $bdd->prepare("SELECT * FROM invoice"); 
+$queryInvoice->execute(array());
 ?>
 
 <div class="container pb-5">
     <br>
     <p class="text-center">
     <?php
-        if ($row){
-            ?>
-            Modification de facture :
-            <?php
-            echo $_GET["id"];}
-        else echo ('Nouvelle facture');
+        if($row){
+            echo 'Modification de facture : '
+            . $resultat["invoice_num"];
+        } elseif ($_GET['id']==0) {
+            echo 'Nouvelle facture';
+    }
         ?>
     </p>
 
     <div class="card bg-light">
         <article class="card-body mx-auto col-xl-5">
 
-<!--/////Formulaire method post ou get...-->
+<!--/////Formulaire method post ou get à determiner ici...-->
             <form method="post" action="">
             <?php
-            // if ($row){
+            if ($row){
                 ?>
-            <!-- <input type="hidden" name="modif" value="modif"/> -->
+            <input type="hidden" name="modif" value="modif"/>
             <?php
-            // }
+            }
             ?>
 
 <!--/////Input formulaire N°Facture...-->
     <div class="form-group has-danger">
         <label class="form-control-label" for="inputDanger1">N° facture</label>
-        <input type="text" value="
-<?php
-            // if(isset($_POST['invoiceNum'])){echo $_POST['invoiceNum'];}else{echo $result['invoice_num'];}
-?>
-        " name="invoiceNum" class="form-control
-<?php
-            // if(array_key_exists('invoice',$erreur)){echo
-?>
-        " id="inputInvalid">
-        <div class="invalid-feedback">
-<?php
-        // if(array_key_exists('invoice',$erreur)){echo $erreur['invoice'];}
-?>
-    </div>
+        <input type="text" name="invoice_num" value="<?php if(isset($_POST['invoice_num'])){echo $_POST['invoice_num'];}else{echo $resultat['invoice_num'];}?>"                 class="form-control <?php if(array_key_exists('invoice_num',$erreur)){echo "is-invalid";}?>">
+        <div class="invalid-feedback"><?php if(array_key_exists('invoice_num',$erreur)){echo $erreur['invoice_num'];}?></div>
 </div>
 
 <!--/////Input formulaire Date Facture format "date"...-->
         <div class="form-group has-danger">
             <label class="form-control-label" for="inputDanger1">Date facture</label>
-            <input type="date" value="" name="invoicedDate" class="form-control" id="inputInvalid">
+            <input type="date" name="invoiced_date" value="<?php echo $resultat['invoiced_date'];?>" class="form-control" id="inputInvalid">
             <div class="invalid-feedback">
             </div>
         </div>
@@ -72,7 +68,7 @@ $row = $queryModify->rowCount();
 <!--/////Input formulaire Date Service format "date"...-->
         <div class="form-group has-danger">
             <label class="form-control-label" for="inputDanger1">Date service</label>
-            <input type="date" value="" name="serviceDate" class="form-control" id="inputInvalid">
+            <input type="date" name="service_date" value="<?php echo $resultat['service_date'];?>" class="form-control" id="inputInvalid">
             <div class="invalid-feedback">...</div>
         </div>
 
@@ -88,7 +84,7 @@ $row = $queryModify->rowCount();
             ?>
             <option><?=$resultat['last_name'] . " " . $resultat['first_name'] . " N° id " . $resultat['id_contacts'] . " / " . $resultat['comp_name'] . " N° id Société " . $resultat['company_id_company']?></option>
 <!--/////Select en valeurs cachée "hidden"-->
-            <option value='idContact' hidden ><?= $resultat['id_contacts']?></option>
+            <option value='idContact' hidden ><?=$resultat['id_contacts']?></option>
             <option value='idCompany' hidden ><?=$resultat['company_id_company']?></option>
             <?php
                 };
@@ -99,14 +95,14 @@ $row = $queryModify->rowCount();
 <!--/////Input Id_contact-->
         <div class="form-group has-danger">
             <label class="form-control-label" for="inputDanger1"><br><b>Confirmation : </b><br><br>N°id contact</label>
-            <input type="text" value="" name="idContact" class="form-control" id="inputInvalid">
+            <input type="text" name="id_contact" value="<?php echo $resultat['id_contacts'];?>" class="form-control" id="inputInvalid">
             <div class="invalid-feedback">...</div>
         </div>
 
 <!--/////Input Id_comp...-->
         <div class="form-group has-danger">
             <label class="form-control-label" for="inputDanger1">N°id société</label>
-            <input type="text" value="" name="idCompany" class="form-control" id="inputInvalid">
+            <input type="text" name="id_company" value="<?php echo $resultat['company_id_company'];?>" class="form-control" id="inputInvalid">
             <div class="invalid-feedback">...</div>
         </div>
 

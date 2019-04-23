@@ -22,7 +22,7 @@ elseif($url[0] == 'detailFactures' AND !empty($_GET['id'])){
     require './factures/detailFactures.php';
 }
 elseif($url[0] == 'deleteFacture' AND !empty($_GET['id'])){
-    require './factures/deleteFacture.php';
+    require './assets/ctrl/deleteFacture.php';
 }
 // COMPANY ////////////////////////////////////////////////////////////
 elseif($url[0] == 'company' AND !empty($_GET['id'])){
