@@ -1,63 +1,73 @@
 <?php
-
+session_start();
 $url = '';
 if (isset($_GET['url'])) {
-    $url = explode('/',$_GET['url']);
+    $url = explode('-',$_GET['url']);
+}
+include "public/connexion/bd.php";
+// PAGE CONNEXION ///////////////////////////////////////////////////////
+if($url[0] == '' || $url[0] == 'login'){
+    if(!isset($_SESSION[auth])){
+    require './controllers/login-ctrl.php';
+    }
+    else{
+        require './controllers/accueil-ctrl.php';
+    }
 }
 // PAGE ACCUEIL ///////////////////////////////////////////////////////
-if($url[0] == ''){
-    header('location:./accueil/01');
+elseif($url[0] == 'accueil'){
+    require './controllers/accueil-ctrl.php';
 }
-elseif($url[0] == 'accueil' AND !empty($_GET['id'])){
-    require './accueil/accueil.php';
+// PAGE FACTURES ///////////////////////////////////////////////////////
+elseif($url[0] == 'factures'){
+    require './controllers/factures-ctrl.php';
 }
-// FACTURES ///////////////////////////////////////////////////////////
-elseif($url[0] == 'factures' AND !empty($_GET['id'])){
-    require './factures/factures.php';
+elseif($url[0] == 'detailFactures'){
+    require './controllers/detailFactures-ctrl.php';
 }
-elseif($url[0] == 'newfacture' AND !empty($_GET['id'])){
-    require './factures/newfacture.php';
+elseif($url[0] == 'newfacture' AND isset($_SESSION['auth'])){
+    require './controllers/newfacture-ctrl.php';
 }
-elseif($url[0] == 'detailFactures' AND !empty($_GET['id'])){
-    require './factures/detailFactures.php';
+elseif($url[0] == 'deleteFacture' AND isset($_SESSION['auth'])){
+    require './controllers/deleteFacture-ctrl.php';
 }
-elseif($url[0] == 'deleteFacture' AND !empty($_GET['id'])){
-    require './assets/ctrl/deleteFacture.php';
+// PAGE COMPANY ///////////////////////////////////////////////////////
+elseif($url[0] == 'company'){
+    require './controllers/company-ctrl.php';
 }
-// COMPANY ////////////////////////////////////////////////////////////
-elseif($url[0] == 'company' AND !empty($_GET['id'])){
-    require './company/company.php';
+elseif($url[0] == 'detailSociete'){
+    require './controllers/detailSociete-ctrl.php';
 }
-elseif($url[0] == 'detailSociete' AND !empty($_GET['id'])){
-    require './company/detailSociete.php';
+elseif($url[0] == 'newSociete' AND isset($_SESSION['auth'])){
+    require './controllers/newSociete-ctrl.php';
 }
-elseif($url[0] == 'newSociete' AND !empty($_GET['id'])){
-    require './company/newSociete.php';
+elseif($url[0] == 'deleteSociete' AND isset($_SESSION['auth'])){
+    require './controllers/deleteSociete-ctrl.php';
 }
-elseif($url[0] == 'deleteSociete' AND !empty($_GET['id'])){
-    require './assets/ctrl/deleteSociete.php';
+// PAGE CONTACTS ///////////////////////////////////////////////////////
+elseif($url[0] == 'contacts'){
+    require './controllers/contacts-ctrl.php';
 }
-// CONTACT ///////////////////////////////////////////////////////////
-elseif($url[0] == 'contacts' AND !empty($_GET['id'])){
-    require './contacts/contacts.php';
+elseif($url[0] == 'detailContact'){
+    require './controllers/contacts-detail-ctrl.php';
 }
-elseif($url[0] == 'newContact' AND !empty($_GET['id'])){
-    require './contacts/newContact.php';
+elseif($url[0] == 'contacts'){
+    require './controllers/contacts-ctrl.php';
 }
-elseif($url[0] == 'detailContact' AND !empty($_GET['id'])){
-    require './contacts/detailContact.php';
+elseif($url[0] == 'newContact' AND isset($_SESSION['auth'])){
+    require './controllers/contacts-new-ctrl.php';
 }
-elseif($url[0] == 'deleteContact' AND !empty($_GET['id'])){
-    require './assets/ctrl/deleteContact.php';
+elseif($url[0] == 'deleteContact' AND isset($_SESSION['auth'])){
+    require './controllers/deleteContact-ctrl.php';
 }
-// CONNEXION ET DéCONNEXION ///////////////////////////////////////////
-elseif($url[0] == 'connexion' AND !empty($_GET['id'])){
-    require './connexion/connexion.php';
-}
-elseif($url[0] == 'logout' AND !empty($_GET['id'])){
-    require './assets/ctrl/logout.php';
+// DECONNEXION /////////////////////////////////////////////////
+elseif($url[0] == 'logout' AND isset($_SESSION['auth'])){
+    require './controllers/logout.php';
 }
 // ERREUR PAGE 404 ///////////////////////////////////////////
 else{
-    echo 'Erreur 404 :(';
+    echo '<h1>Erreur 404 :( </h1><br>';
+    ?>
+    <a href='accueil-5'>Go back to COGIP</a>
+    <?php
 }

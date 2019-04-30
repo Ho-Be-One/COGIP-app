@@ -8,11 +8,11 @@
 
 For this project, we had to realize an accounting web application for a fictive company named COGIP. To develop this application we have to use PHP and MySQL languages.
 
-Guy worked on the general layout of the app, managed the users login to the application and implemented a CRUD functionality for the contacts.
+[Guy "Ho-Be-One"](https://github.com/Ho-Be-One) worked on the general layout of the app, managed the users login to the application and implemented a CRUD functionality for the contacts.
 
-Audrey has implemented a CRUD functionality for the invoices.
+[Audrey](https://github.com/AudreyKremers) has implemented a CRUD functionality for the invoices.
 
-Jean-Marc worked on the creation of the MySQL Database and implemented a CRUD functionality for the companies.
+[Jean-Marc](https://github.com/jmbroutin) worked on the creation of the MySQL Database and implemented a CRUD functionality for the companies.
 
 
 ### Link to the complete instructions
@@ -25,7 +25,9 @@ https://github.com/becodeorg/BXL-Johnson-3.9/tree/master/Projets/COGIPapp
 * MySQL,MySQL Workbench
 
 ## Screenshots
-![Screenshot Weather](assets/img/CogipWebAppScreenshot.png)
+![Screenshot login](public/img/screen-one.png)
+![Screenshot home](public/img/screen-two.png)
+
 
 ## Link to the Web Application
 https://cogip-becode.000webhostapp.com/index.php
@@ -45,7 +47,6 @@ password: Perrache
 login: elvis.presley@cogip.com
 password: Presley
 
-Please note that at this time the CRUD functionality is working properly for the companies. CRUD functionalities for contacts and invoices will be online in a few weeks
 
 
 
