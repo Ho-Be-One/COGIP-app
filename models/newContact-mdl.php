@@ -8,7 +8,6 @@ if (isset($_POST['submit'])){
     $device = htmlspecialchars(trim($_POST['device']));
     $societe = htmlspecialchars(trim($_POST['societe']));
 
-    include "assets/connexion/bd.php";
 
     $erreur=array();
 
